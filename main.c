@@ -75,6 +75,7 @@ int main(int argc, const char * argv[]) {
     int type;
     int credit;
     int energy;
+    int pos = 0;
     
     board_nr = 0;
     food_nr = 0;
@@ -93,15 +94,16 @@ int main(int argc, const char * argv[]) {
     }
     
     printf("Reading board component......\n");
-    while () //read a node parameter set
+    while (4 == fscanf(fp, "%s %i %i %i", name, &type, &credit, &energy)) //read a node parameter set
     {
         //store the parameter set
+        smmObj_genNode(name, type, credit, energy);
     }
     fclose(fp);
     printf("Total number of board nodes : %i\n", board_nr);
     
     
-    
+    #if
     //2. food card config 
     if ((fp = fopen(FOODFILEPATH,"r")) == NULL)
     {
@@ -133,7 +135,7 @@ int main(int argc, const char * argv[]) {
     }
     fclose(fp);
     printf("Total number of festival cards : %i\n", festival_nr);
-    
+    #endif
     
     
     //2. Player configuration ---------------------------------------------------------------------------------
@@ -155,7 +157,15 @@ int main(int argc, const char * argv[]) {
         //printPlayerStatus();
         
         //4-2. die rolling (if not in experiment)
-        
+        die_result = rolldie();
+        pos = pos + die_result;
+
+        printf("node %i : %s, %i, %i, %i\n",
+            smmObj_getBoardName(pos),
+            smmObj_getBoardType(pos),
+            smmObj_getBoardCredit(pos),
+            smmObj_getBoardEnergy(pos);
+
         
         //4-3. go forward
         //goForward();
