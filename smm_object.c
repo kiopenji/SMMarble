@@ -22,6 +22,17 @@
 #define SMMNODE_TYPE_FOODCHANCE     5
 #define SMMNODE_TYPE_FESTIVAL       6
 
+#define SMMNODE_GRADE_APLUS         0
+#define SMMNODE_GRADE_AZERO         1
+#define SMMNODE_GRADE_AMINU         2
+#define SMMNODE_GRADE_BPLUS         3
+#define SMMNODE_GRADE_BZERO         4
+#define SMMNODE_GRADE_BMINU         5
+#define SMMNODE_GRADE_CPLUS         6
+#define SMMNODE_GRADE_CZERO         7
+#define SMMNODE_GRADE_CMINU         8
+
+
 static char smmNodeName[MAX_NODETYPE][MAX_CHARNAME] = {
     "lecture",
     "restaurant",
@@ -30,6 +41,18 @@ static char smmNodeName[MAX_NODETYPE][MAX_CHARNAME] = {
     "gotoLab",
     "foodChance",
     "festival"
+};
+
+static char smmGradeName[MAX_GRADE][MAX_CHARNAME] = {
+    "A+",
+    "A0",
+    "A-",
+    "B+",
+    "B0",
+    "B-",
+    "C+",
+    "C0",
+    "C-"
 };
 
 
@@ -58,29 +81,28 @@ char* smmObj_getBoardName(int idx)
     return &board_name[idx][0];
 }
 
-char* smmObj_getBoardType(int idx)
+int smmObj_getBoardType(int idx)
 {
     return board_type[idx];
 }
 
-char* smmObj_getBoardCredit(int idx)
+int smmObj_getBoardCredit(int idx)
 {
     return board_credit[idx];
 }
 
-char* smmObj_getBoardEnergy(int idx)
+int smmObj_getBoardEnergy(int idx)
 {
     return board_energy[idx];
 }
 
 //element to string
-char* smmObj_getNodeName(smmNode_e type)
+char* smmObj_getNodeName(int type)
 {
     return smmNodeName[type];
 }
 
-char* smmObj_getGradeName(smmGrade_e grade)
+char* smmObj_getGradeName(int grade)
 {
     return smmGradeName[grade];
 }
-
